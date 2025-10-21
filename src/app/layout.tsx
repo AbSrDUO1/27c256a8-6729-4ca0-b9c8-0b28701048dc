@@ -831,8 +831,7 @@ export default function RootLayout({
       return;
     }
 
-    if (!isActive) return;
-    
+    // Real-time updates should work regardless of isActive state
     if (e.data.type === 'webild-update-text') {
       const { selector, newValue } = e.data.data;
       try {
@@ -867,6 +866,8 @@ export default function RootLayout({
       }
       return;
     }
+
+    if (!isActive) return;
 
     if (e.data.type === 'webild-replace-image') {
       const { selector, newSrc, isBackground } = e.data.data;
